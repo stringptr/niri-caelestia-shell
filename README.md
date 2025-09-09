@@ -391,8 +391,9 @@ Config lives in:
             "showNetwork": true
         },
         "tray": {
-            "background": true,
-            "recolour": true
+            "background": false,
+            "iconSubs": [],
+            "recolour": false
         },
         "workspaces": {
             "activeIndicator": true,

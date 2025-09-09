@@ -85,6 +85,7 @@ JsonObject {
     component Tray: JsonObject {
         property bool background: false
         property bool recolour: false
+        property list<var> iconSubs: []
     }
 
     component Status: JsonObject {
