@@ -542,7 +542,8 @@ Config lives in:
             "variants": false,
             "wallpapers": false
         },
-        "showOnHover": false
+        "showOnHover": false,
+        "hiddenApps": []
     },
     "lock": {
         "recolourLogo": false
