@@ -374,10 +374,6 @@ Config lives in:
             {
                 "id": "power",
                 "enabled": true
-            },
-            {
-                "id": "idleInhibitor",
-                "enabled": false
             }
         ],
         "persistent": false,
