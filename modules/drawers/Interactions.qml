@@ -58,6 +58,8 @@ CustomMouseArea {
     }
 
     anchors.fill: parent
+    anchors.rightMargin: -1
+    anchors.bottomMargin: -1
     hoverEnabled: true
 
     onPressed: event => {
