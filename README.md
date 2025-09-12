@@ -600,6 +600,9 @@ Config lives in:
                 "reboot"
             ]
         }
+    },
+    "utilities": {
+        "enabled": true
     }
 }
 
