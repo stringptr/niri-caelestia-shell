@@ -528,7 +528,7 @@ Config lives in:
         "dragThreshold": 50,
         "vimKeybinds": false,
         "enableDangerousActions": false,
-        "maxShown": 8,
+        "maxShown": 7,
         "maxWallpapers": 9,
         "specialPrefix": "@",
         "useFuzzy": {
