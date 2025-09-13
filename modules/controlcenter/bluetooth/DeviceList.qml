@@ -242,7 +242,7 @@ ColumnLayout {
                     radius: Appearance.rounding.full
                     color: device.connected ? Colours.palette.m3primaryContainer : "transparent"
 
-                    StyledBusyIndicator {
+                    CircularIndicator {
                         anchors.fill: parent
                         running: device.loading
                     }
