@@ -12,6 +12,15 @@ Singleton {
 
     readonly property list<Notif> list: []
     readonly property list<Notif> popups: list.filter(n => n.popup)
+    property alias dnd: props.dnd
+
+    PersistentProperties {
+        id: props
+
+        property bool dnd
+
+        reloadableId: "notifs"
+    }
 
     NotificationServer {
         id: server
@@ -26,10 +35,11 @@ Singleton {
         onNotification: notif => {
             notif.tracked = true;
 
-            root.list.push(notifComp.createObject(root, {
-                popup: true,
-                notification: notif
-            }));
+            if (!props.dnd)
+                root.list.push(notifComp.createObject(root, {
+                    popup: true,
+                    notification: notif
+                }));
         }
     }
 
@@ -48,6 +58,22 @@ Singleton {
         function clear(): void {
             for (const notif of root.list)
                 notif.popup = false;
+        }
+
+        function isDndEnabled(): bool {
+            return props.dnd;
+        }
+
+        function toggleDnd(): void {
+            props.dnd = !props.dnd;
+        }
+
+        function enableDnd(): void {
+            props.dnd = true;
+        }
+
+        function disableDnd(): void {
+            props.dnd = false;
         }
     }
 
