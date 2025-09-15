@@ -58,9 +58,6 @@ CustomMouseArea {
     }
 
     anchors.fill: parent
-    // FIXME: remove when Hyprland bug fixed
-    anchors.rightMargin: -1
-    anchors.bottomMargin: -1
     hoverEnabled: true
 
     onPressed: event => {
