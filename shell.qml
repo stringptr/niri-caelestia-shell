@@ -19,10 +19,12 @@ ShellRoot {
     Background {}
     Drawers {}
     AreaPicker {}
-    Lock {}
+    Lock {
+        id: lock
+    }
 
     Shortcuts {}
-
-    // LazyLoader { active: enableSidebarLeft; component: SidebarLeft {} }
-    // LazyLoader { active: enableSidebarRight; component: SidebarRight {} }
+    // IdleMonitors {
+    //     lock: lock
+    // }
 }

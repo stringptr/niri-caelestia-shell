@@ -342,12 +342,13 @@ Config lives in:
     },
     "general": {
         "apps": {
-            "terminal": [
-                "foot"
-            ],
-            "audio": [
-                "pavucontrol"
-            ]
+            "terminal": ["foot"],
+            "audio": ["pavucontrol"]
+        },
+        "idle": {
+            "lockTimeout": 180,
+            "dpmsTimeout": 300,
+            "sleepTimeout": 600
         }
     },
     "background": {
