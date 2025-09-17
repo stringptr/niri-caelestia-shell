@@ -346,6 +346,7 @@ Config lives in:
             "audio": ["pavucontrol"]
         },
         "idle": {
+            "inhibitWhenAudio": true,
             "lockTimeout": 180,
             "dpmsTimeout": 300,
             "sleepTimeout": 600
