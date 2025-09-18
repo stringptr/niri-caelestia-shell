@@ -36,7 +36,7 @@ Singleton {
             notif.tracked = true;
 
             root.list.push(notifComp.createObject(root, {
-                popup: !props.dnd,
+                popup: !props.dnd && ![...Visibilities.screens.values()].some(v => v.sidebar),
                 notification: notif
             }));
         }
