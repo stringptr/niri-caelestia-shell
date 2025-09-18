@@ -611,6 +611,7 @@ Config lives in:
     },
     "session": {
         "dragThreshold": 30,
+        "enabled": true,
         "vimKeybinds": false,
         "commands": {
             "logout": [
@@ -632,6 +633,10 @@ Config lives in:
             ]
         }
     },
+    "sidebar": {
+        "dragThreshold": 80,
+        "enabled": true
+    }.
     "utilities": {
         "enabled": true
     }

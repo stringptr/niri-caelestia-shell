@@ -71,11 +71,12 @@ Variants {
             }
 
             // HyprlandFocusGrab {
-            //     active: (visibilities.launcher && Config.launcher.enabled) || (visibilities.session && Config.session.enabled)
+            //     active: (visibilities.launcher && Config.launcher.enabled) || (visibilities.session && Config.session.enabled) || (visibilities.sidebar && Config.sidebar.enabled)
             //     windows: [win]
             //     onCleared: {
             //         visibilities.launcher = false;
             //         visibilities.session = false;
+            //         visibilities.sidebar = false;
             //     }
             // }
 
@@ -118,6 +119,7 @@ Variants {
                 property bool launcher
                 property bool dashboard
                 property bool utilities
+                property bool sidebar
 
                 Component.onCompleted: Visibilities.screens[scope.modelData] = this
             }
