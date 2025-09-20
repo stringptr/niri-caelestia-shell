@@ -636,7 +636,7 @@ Config lives in:
     "sidebar": {
         "dragThreshold": 80,
         "enabled": true
-    }.
+    },
     "utilities": {
         "enabled": true
     }
