@@ -40,6 +40,16 @@ Variants {
             WlrLayershell.keyboardFocus: visibilities.launcher || visibilities.session ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
             mask: Region {
+            mask: focusGrab.active || Hypr.focusedMonitor?.activeWorkspace?.lastIpcObject.windows > 0 ? inputMask : null
+
+            anchors.top: true
+            anchors.bottom: true
+            anchors.left: true
+            anchors.right: true
+
+            Region {
+                id: inputMask
+
                 x: bar.implicitWidth
                 y: Config.border.thickness
                 width: win.width - bar.implicitWidth - Config.border.thickness
@@ -71,6 +81,17 @@ Variants {
             }
 
             // HyprlandFocusGrab {
+            //     active: (visibilities.launcher && Config.launcher.enabled) || (visibilities.session && Config.session.enabled) || (visibilities.sidebar && Config.sidebar.enabled)
+            //     windows: [win]
+            //     onCleared: {
+            //         visibilities.launcher = false;
+            //         visibilities.session = false;
+            //         visibilities.sidebar = false;
+            //     }
+            // }
+            // HyprlandFocusGrab {
+            //     id: focusGrab
+            //
             //     active: (visibilities.launcher && Config.launcher.enabled) || (visibilities.session && Config.session.enabled) || (visibilities.sidebar && Config.sidebar.enabled)
             //     windows: [win]
             //     onCleared: {
