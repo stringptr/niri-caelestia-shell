@@ -17,6 +17,7 @@ Singleton {
     readonly property string config: `${Quickshell.env("XDG_CONFIG_HOME") || `${home}/.config`}/quickshell/caelestia_experimental`
 
     readonly property string imagecache: `${cache}/imagecache`
+    readonly property string notifimagecache: `${imagecache}/notifs`
     readonly property string wallsdir: Quickshell.env("CAELESTIA_WALLPAPERS_DIR") || absolutePath(Config.paths.wallpaperDir)
     readonly property string libdir: `${config}/build/qml/Caelestia` || "/usr/lib/caelestia"
     // readonly property string notifhistorydir: `${documents}/NotifHistory`
