@@ -40,8 +40,8 @@ Variants {
             WlrLayershell.keyboardFocus: visibilities.launcher || visibilities.session ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
             // mask: Region {
-            // mask: focusGrab.active || Hypr.focusedMonitor?.activeWorkspace?.lastIpcObject.windows > 0 ? inputMask : null
             mask: inputMask
+            // mask: focusGrab.active || panels.popouts.isDetached || Hypr.focusedMonitor?.activeWorkspace?.lastIpcObject.windows > 0 ? inputMask : null
 
               anchors.top: true
               anchors.bottom: true
@@ -77,23 +77,16 @@ Variants {
             }
 
             // HyprlandFocusGrab {
-            //     active: (visibilities.launcher && Config.launcher.enabled) || (visibilities.session && Config.session.enabled) || (visibilities.sidebar && Config.sidebar.enabled)
-            //     windows: [win]
-            //     onCleared: {
-            //         visibilities.launcher = false;
-            //         visibilities.session = false;
-            //         visibilities.sidebar = false;
-            //     }
-            // }
-            // HyprlandFocusGrab {
             //     id: focusGrab
             //
-            //     active: (visibilities.launcher && Config.launcher.enabled) || (visibilities.session && Config.session.enabled) || (visibilities.sidebar && Config.sidebar.enabled)
+            //     active: (visibilities.launcher && Config.launcher.enabled) || (visibilities.session && Config.session.enabled) || (visibilities.sidebar && Config.sidebar.enabled) || (!Config.dashboard.showOnHover && visibilities.dashboard && Config.dashboard.enabled) || (panels.popouts.currentName.startsWith("traymenu") && panels.popouts.current?.depth > 1)
             //     windows: [win]
             //     onCleared: {
             //         visibilities.launcher = false;
             //         visibilities.session = false;
             //         visibilities.sidebar = false;
+            //         visibilities.dashboard = false;
+            //         panels.popouts.hasCurrent = false;
             //     }
             // }
 
