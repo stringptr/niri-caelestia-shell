@@ -165,60 +165,79 @@ Singleton {
     }
 
     component M3Palette: QtObject {
-        property color m3primary_paletteKeyColor: "#a26387"
-        property color m3secondary_paletteKeyColor: "#8b6f7d"
-        property color m3tertiary_paletteKeyColor: "#9c6c53"
-        property color m3neutral_paletteKeyColor: "#7f7478"
-        property color m3neutral_variant_paletteKeyColor: "#827379"
-        property color m3background: "#181115"
-        property color m3onBackground: "#eddfe4"
-        property color m3surface: "#181115"
-        property color m3surfaceDim: "#181115"
-        property color m3surfaceBright: "#40373b"
-        property color m3surfaceContainerLowest: "#130c10"
-        property color m3surfaceContainerLow: "#211a1d"
-        property color m3surfaceContainer: "#251e21"
-        property color m3surfaceContainerHigh: "#30282b"
-        property color m3surfaceContainerHighest: "#3b3236"
-        property color m3onSurface: "#eddfe4"
-        property color m3surfaceVariant: "#504349"
-        property color m3onSurfaceVariant: "#d3c2c9"
-        property color m3inverseSurface: "#eddfe4"
-        property color m3inverseOnSurface: "#362e32"
-        property color m3outline: "#9c8d93"
-        property color m3outlineVariant: "#504349"
-        property color m3shadow: "#000000"
-        property color m3scrim: "#000000"
-        property color m3surfaceTint: "#fbb1d8"
-        property color m3primary: "#fbb1d8"
-        property color m3onPrimary: "#511d3e"
-        property color m3primaryContainer: "#6b3455"
-        property color m3onPrimaryContainer: "#ffd8ea"
-        property color m3inversePrimary: "#864b6e"
-        property color m3secondary: "#dfbecd"
-        property color m3onSecondary: "#402a36"
-        property color m3secondaryContainer: "#5a424f"
-        property color m3onSecondaryContainer: "#fcd9e9"
-        property color m3tertiary: "#f3ba9c"
-        property color m3onTertiary: "#4a2713"
-        property color m3tertiaryContainer: "#b8856a"
-        property color m3onTertiaryContainer: "#000000"
-        property color m3error: "#ffb4ab"
-        property color m3onError: "#690005"
-        property color m3errorContainer: "#93000a"
-        property color m3onErrorContainer: "#ffdad6"
-        property color m3primaryFixed: "#ffd8ea"
-        property color m3primaryFixedDim: "#fbb1d8"
-        property color m3onPrimaryFixed: "#370728"
-        property color m3onPrimaryFixedVariant: "#6b3455"
-        property color m3secondaryFixed: "#fcd9e9"
-        property color m3secondaryFixedDim: "#dfbecd"
-        property color m3onSecondaryFixed: "#291520"
-        property color m3onSecondaryFixedVariant: "#58404c"
-        property color m3tertiaryFixed: "#ffdbca"
-        property color m3tertiaryFixedDim: "#f3ba9c"
-        property color m3onTertiaryFixed: "#311302"
-        property color m3onTertiaryFixedVariant: "#653d27"
+        property color m3primary_paletteKeyColor: Pal.Palette.primary
+        property color m3secondary_paletteKeyColor: Pal.Palette.secondary
+        property color m3tertiary_paletteKeyColor: Pal.Palette.tertiary
+        property color m3neutral_paletteKeyColor: Pal.Palette.surface
+        property color m3neutral_variant_paletteKeyColor: Pal.Palette.surface_variant
+
+        property color m3background: Pal.Palette.background
+        property color m3onBackground: Pal.Palette.on_background
+
+        property color m3surface: Pal.Palette.surface
+        property color m3surfaceDim: Pal.Palette.surface_dim
+        property color m3surfaceBright: Pal.Palette.surface_bright
+        property color m3surfaceContainerLowest: Pal.Palette.surface_container_lowest
+        property color m3surfaceContainerLow: Pal.Palette.surface_container_low
+        property color m3surfaceContainer: Pal.Palette.surface_container
+        property color m3surfaceContainerHigh: Pal.Palette.surface_container_high
+        property color m3surfaceContainerHighest: Pal.Palette.surface_container_highest
+
+        property color m3onSurface: Pal.Palette.on_surface
+        property color m3surfaceVariant: Pal.Palette.surface_variant
+        property color m3onSurfaceVariant: Pal.Palette.on_surface_variant
+
+        property color m3inverseSurface: Pal.Palette.inverse_surface
+        property color m3inverseOnSurface: Pal.Palette.inverse_on_surface
+
+        property color m3outline: Pal.Palette.outline
+        property color m3outlineVariant: Pal.Palette.outline_variant
+
+        property color m3shadow: Pal.Palette.shadow
+        property color m3scrim: Pal.Palette.scrim
+
+        property color m3surfaceTint: Pal.Palette.surface_tint
+
+        property color m3primary: Pal.Palette.primary
+        property color m3onPrimary: Pal.Palette.on_primary
+        property color m3primaryContainer: Pal.Palette.primary_container
+        property color m3onPrimaryContainer: Pal.Palette.on_primary_container
+        property color m3inversePrimary: Pal.Palette.inverse_primary
+
+        property color m3secondary: Pal.Palette.secondary
+        property color m3onSecondary: Pal.Palette.on_secondary
+        property color m3secondaryContainer: Pal.Palette.secondary_container
+        property color m3onSecondaryContainer: Pal.Palette.on_secondary_container
+
+        property color m3tertiary: Pal.Palette.tertiary
+        property color m3onTertiary: Pal.Palette.on_tertiary
+        property color m3tertiaryContainer: Pal.Palette.tertiary_container
+        property color m3onTertiaryContainer: Pal.Palette.on_tertiary_container
+
+        property color m3error: Pal.Palette.error
+        property color m3onError: Pal.Palette.on_error
+        property color m3errorContainer: Pal.Palette.error_container
+        property color m3onErrorContainer: Pal.Palette.on_error_container
+
+        property color m3success: Pal.Palette.success
+        property color m3onSuccess: Pal.Palette.on_success
+        property color m3successContainer: Pal.Palette.success_container
+        property color m3onSuccessContainer: Pal.Palette.on_success_container
+
+        property color m3primaryFixed: Pal.Palette.primary_fixed
+        property color m3primaryFixedDim: Pal.Palette.primary_fixed_dim
+        property color m3onPrimaryFixed: Pal.Palette.on_primary_fixed
+        property color m3onPrimaryFixedVariant: Pal.Palette.on_primary_fixed_variant
+
+        property color m3secondaryFixed: Pal.Palette.secondary_fixed
+        property color m3secondaryFixedDim: Pal.Palette.secondary_fixed_dim
+        property color m3onSecondaryFixed: Pal.Palette.on_secondary_fixed
+        property color m3onSecondaryFixedVariant: Pal.Palette.on_secondary_fixed_variant
+
+        property color m3tertiaryFixed: Pal.Palette.tertiary_fixed
+        property color m3tertiaryFixedDim: Pal.Palette.tertiary_fixed_dim
+        property color m3onTertiaryFixed: Pal.Palette.on_tertiary_fixed
+        property color m3onTertiaryFixedVariant: Pal.Palette.on_tertiary_fixed_variant
         property color term0: "#353434"
         property color term1: "#fe45a7"
         property color term2: "#ffbac0"
