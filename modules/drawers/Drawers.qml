@@ -41,7 +41,12 @@ Variants {
 
             // mask: Region {
             mask: inputMask
-            // mask: focusGrab.active || panels.popouts.isDetached || Hypr.focusedMonitor?.activeWorkspace?.lastIpcObject.windows > 0 ? inputMask : null
+            // mask: {
+            //     if (focusGrab.active || panels.popouts.isDetached)
+            //         return inputMask;
+            //     const mon = Hypr.monitorFor(screen);
+            //     return mon?.lastIpcObject.specialWorkspace.name || mon?.activeWorkspace?.lastIpcObject.windows > 0 ? inputMask : null;
+            // }
 
               anchors.top: true
               anchors.bottom: true
