@@ -61,8 +61,6 @@ Loader {
                 }
             }
 
-            mask: Region {}
-
             Loader {
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
