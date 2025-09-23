@@ -677,8 +677,12 @@ Config lives in:
         "enabled": true,
         "maxToasts": 4,
         "toasts": {
+            "audioInputChanged": true,
             "audioOutputChanged": true,
-            "audioInputChanged": true
+            "chargingChanged": true,
+            "configLoaded": true,
+            "dndChanged": true,
+            "gameModeChanged": true
         }
     }
 }
