@@ -675,7 +675,11 @@ Config lives in:
     },
     "utilities": {
         "enabled": true,
-        "maxToasts": 4
+        "maxToasts": 4,
+        "toasts": {
+            "audioOutputChanged": true,
+            "audioInputChanged": true
+        }
     }
 }
 
