@@ -679,10 +679,12 @@ Config lives in:
         "toasts": {
             "audioInputChanged": true,
             "audioOutputChanged": true,
+            "capsLockChanged": true,
             "chargingChanged": true,
             "configLoaded": true,
             "dndChanged": true,
-            "gameModeChanged": true
+            "gameModeChanged": true,
+            "numLockChanged": true
         }
     }
 }
