@@ -24,6 +24,6 @@ ColumnLayout {
     //     Layout.fillWidth: true
     //
     //     text: qsTr("Switch layout")
-    //     onClicked: Quickshell.execDetached(["hyprctl", "switchxkblayout", "all", "next"])
+    //     onClicked: Hypr.message("switchxkblayout all next")
     // }
 }
