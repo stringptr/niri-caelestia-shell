@@ -343,7 +343,9 @@ Config lives in:
     "general": {
         "apps": {
             "terminal": ["foot"],
-            "audio": ["pavucontrol"]
+            "audio": ["pavucontrol"],
+            "playback": ["mpv"],
+            "explorer": ["thunar"]
         },
         "battery": {
             "warnLevels": [
