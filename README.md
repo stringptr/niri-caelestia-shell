@@ -457,6 +457,7 @@ Config lives in:
         },
         "tray": {
             "background": false,
+            "compact": false,
             "iconSubs": [],
             "recolour": false
         },
