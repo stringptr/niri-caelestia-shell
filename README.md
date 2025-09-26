@@ -372,6 +372,7 @@ Config lives in:
             "criticalLevel": 3
         },
         "idle": {
+            "lockBeforeSleep": true,
             "inhibitWhenAudio": true,
             "timeouts": [
                 {
