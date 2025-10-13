@@ -692,6 +692,7 @@ Config lives in:
             "configLoaded": true,
             "dndChanged": true,
             "gameModeChanged": true,
+            "kbLayoutChanged": true,
             "numLockChanged": true
         }
     }
