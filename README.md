@@ -636,6 +636,7 @@ Config lives in:
     },
     "services": {
         "audioIncrement": 0.1,
+        "maxVolume": 1.0,
         "defaultPlayer": "Spotify",
         "gpuType": "",
         "playerAliases": [
