@@ -474,11 +474,13 @@ Config lives in:
             "occupiedBg": true,
             "occupiedLabel": "⊙",
             "showWindows": true,
-            "shown": 4,
-            "windowIconImage": true,
-            "focusedWindowBlob": true,
-            "windowIconGap": 0,
-            "windowIconSize": 30
+            "shown": 5,
+            "specialWorkspaceIcons": [
+                {
+                    "name": "steam",
+                    "icon": "sports_esports"
+                }
+            ]
         }
     },
     "border": {
