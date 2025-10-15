@@ -695,6 +695,7 @@ Config lives in:
             "kbLayoutChanged": true,
             "numLockChanged": true,
             "vpnChanged": true,
+            "nowPlaying": false
         },
         "vpn": {
             "enabled": false,
