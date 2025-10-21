@@ -398,7 +398,8 @@ Config lives in:
         },
         "enabled": true,
         "visualiser": {
-            "enabled": true,
+            "blur": false,
+            "enabled": false,
             "autoHide": true,
             "rounding": 1,
             "spacing": 1

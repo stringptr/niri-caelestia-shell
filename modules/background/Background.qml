@@ -35,30 +35,10 @@ Loader {
                 id: wallpaper
             }
 
-            Loader {
-                //TODO MAKE SURE IT WORKS
-                readonly property bool shouldBeActive: Config.background.visualiser.enabled && (!Config.background.visualiser.autoHide || Niri.getActiveWorkspaceWindows.values.every(w => w.is_floating)) ? 1 : 0
-                property real offset: shouldBeActive ? 0 : win.modelData.height * 0.2
-
+            Visualiser {
                 anchors.fill: parent
-                anchors.topMargin: offset
-                anchors.bottomMargin: -offset
-                opacity: shouldBeActive ? 1 : 0
-                active: opacity > 0
-                asynchronous: true
-
-                sourceComponent: Visualiser {
-                    screen: win.modelData
-                    wallpaper: wallpaper
-                }
-
-                Behavior on offset {
-                    Anim {}
-                }
-
-                Behavior on opacity {
-                    Anim {}
-                }
+                screen: win.modelData
+                wallpaper: wallpaper
             }
 
             Loader {
