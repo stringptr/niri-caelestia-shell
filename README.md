@@ -448,7 +448,17 @@ Config lives in:
                 "enabled": true
             }
         ],
-        "persistent": false,
+        "persistent": true,
+        "popouts": {
+            "activeWindow": true,
+            "statusIcons": true,
+            "tray": true
+        },
+        "scrollActions": {
+            "brightness": true,
+            "workspaces": true,
+            "volume": true
+        },
         "showOnHover": true,
         "status": {
             "showAudio": false,
