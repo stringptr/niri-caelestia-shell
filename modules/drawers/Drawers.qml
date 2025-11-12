@@ -161,6 +161,7 @@ Variants {
                 property bool dashboard
                 property bool utilities
                 property bool sidebar
+                property bool notifications
 
                 Component.onCompleted: Visibilities.screens[scope.modelData] = this
             }
