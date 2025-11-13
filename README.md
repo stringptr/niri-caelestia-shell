@@ -464,6 +464,8 @@ Config lives in:
             "showAudio": false,
             "showBattery": true,
             "showBluetooth": true,
+            "showEthernet": true,
+            "showKbLayout": false,
             "showMicrophone": false,
             "showKbLayout": false,
             "showNetwork": true
