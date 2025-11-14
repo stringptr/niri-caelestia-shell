@@ -49,11 +49,6 @@ Item {
         }
 
         Popout {
-            name: "ethernet"
-            sourceComponent: Ethernet {}
-        }
-
-        Popout {
             name: "bluetooth"
             sourceComponent: Bluetooth {
                 wrapper: root.wrapper
