@@ -492,6 +492,9 @@ Config lives in:
                     "icon": "sports_esports"
                 }
             ]
+        },
+        "activeWindow": {
+            "inverted": false
         }
     },
     "border": {
