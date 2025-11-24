@@ -494,7 +494,6 @@ Config lives in:
                 }
             ]
         },
-        "excludedScreens": [""],
         "activeWindow": {
             "inverted": false
         }
