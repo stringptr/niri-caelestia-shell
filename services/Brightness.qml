@@ -1,6 +1,7 @@
 pragma Singleton
 pragma ComponentBehavior: Bound
 
+import qs.config
 import qs.components.misc
 import qs.services
 import Quickshell
@@ -46,13 +47,13 @@ Singleton {
     function increaseBrightness(): void {
         const monitor = getMonitor("active");
         if (monitor)
-            monitor.setBrightness(monitor.brightness + 0.1);
+            monitor.setBrightness(monitor.brightness + Config.services.brightnessIncrement);
     }
 
     function decreaseBrightness(): void {
         const monitor = getMonitor("active");
         if (monitor)
-            monitor.setBrightness(monitor.brightness - 0.1);
+            monitor.setBrightness(monitor.brightness - Config.services.brightnessIncrement);
     }
 
     onMonitorsChanged: {
