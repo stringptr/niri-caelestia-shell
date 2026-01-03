@@ -79,6 +79,19 @@ Item {
     //     windows: [QsWindow.window]
     //     onCleared: root.close()
     // }
+    
+    Keys.onPressed: event => {
+        // Don't intercept keys when password popout is active - let it handle them
+        if (currentName === "wirelesspassword") {
+            event.accepted = false;
+        }
+    }
+
+    // HyprlandFocusGrab {
+    //     active: root.isDetached
+    //     windows: [QsWindow.window]
+    //     onCleared: root.close()
+    // }
 
     Binding {
         when: root.isDetached
