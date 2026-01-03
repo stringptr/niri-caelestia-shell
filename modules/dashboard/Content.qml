@@ -108,10 +108,12 @@ Item {
                 }
 
                 Pane {
+                    index: 3
                     sourceComponent: NiriThing {}
                 }
                 
                 Pane {
+                    index: 4
                     sourceComponent: Weather {}
                 }
             }
@@ -138,7 +140,7 @@ Item {
 
     component Pane: Loader {
         required property int index
-        
+
         Layout.alignment: Qt.AlignTop
 
         Component.onCompleted: active = Qt.binding(() => {
