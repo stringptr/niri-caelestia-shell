@@ -49,6 +49,16 @@ Item {
             iconName: "workspaces"
             text: qsTr("Niri")
         }
+
+        Tab {
+            iconName: "cloud"
+            text: qsTr("Weather")
+        }
+
+        // Tab {
+        //     iconName: "workspaces"
+        //     text: qsTr("Workspaces")
+        // }
     }
 
     Item {

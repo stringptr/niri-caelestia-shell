@@ -110,6 +110,10 @@ Item {
                 Pane {
                     sourceComponent: NiriThing {}
                 }
+                
+                Pane {
+                    sourceComponent: Weather {}
+                }
             }
 
             Behavior on contentX {
