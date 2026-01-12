@@ -744,6 +744,39 @@ I don't have nix, plz help :D
     with-cli = true;
     settings.theme.accent = "#ffb86c";
   };
+  settings = {
+    bar.status = {
+      showBattery = false;
+    };
+    paths.wallpaperDir = "~/Images";
+  };
+  cli = {
+    enable = true; # Also add caelestia-cli to path
+    settings = {
+      theme.enableGtk = false;
+    };
+  };
+};
+```
+
+The module automatically adds Caelestia shell to the path with **full functionality**. The CLI is not required, however you have the option to enable and configure it.
+
+</details>
+
+## FAQ
+
+### Need help or support?
+
+You can join the community Discord server for assistance and discussion:  
+https://discord.gg/BGDCFCmMBk
+
+### My screen is flickering, help pls!
+
+Try disabling VRR in the hyprland config. You can do this by adding the following to `~/.config/caelestia/hypr-user.conf`:
+
+```conf
+misc {
+    vrr = 0
 }
 ```
 
