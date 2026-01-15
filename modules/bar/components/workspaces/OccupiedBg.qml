@@ -15,17 +15,16 @@ Item {
 
     property list<var> pills: []
 
-    onGroupOffsetChanged: buildPills()
-    onOccupiedChanged: buildPills()
-
-    function buildPills() {
+    onOccupiedChanged: {
+        if (!occupied) return;
         let count = 0;
         const start = groupOffset;
         const end = start + Config.bar.workspaces.shown;
         for (const [ws, occ] of Object.entries(occupied)) {
             if (ws > start && ws <= end && occ) {
-                if (!occupied[ws + 1]) {
-                    // WARNING changed - 1 to + 1 to make workspaces not join
+                const isFirstInGroup = Number(ws) === start + 1;
+                const isLastInGroup = Number(ws) === end;
+                if (isFirstInGroup || !occupied[ws - 1]) {
                     if (pills[count])
                         pills[count].start = ws;
                     else
@@ -34,7 +33,7 @@ Item {
                         }));
                     count++;
                 }
-                if (!occupied[ws + 1])
+                if ((isLastInGroup || !occupied[ws + 1]) && pills[count - 1])
                     pills[count - 1].end = ws;
             }
         }

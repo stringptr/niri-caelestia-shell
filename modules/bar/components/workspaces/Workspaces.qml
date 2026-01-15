@@ -16,6 +16,8 @@ StyledRect {
     readonly property int activeWsId: Niri.focusedWorkspaceIndex + 1
     readonly property var occupied: Niri.workspaceHasWindows
     readonly property int groupOffset: Math.floor((Niri.focusedWorkspaceIndex) / Config.bar.workspaces.shown) * Config.bar.workspaces.shown
+    readonly property bool onSpecial: (Config.bar.workspaces.perMonitorWorkspaces ? Hypr.monitorFor(screen) : Hypr.focusedMonitor)?.lastIpcObject?.specialWorkspace?.name !== ""
+    readonly property int activeWsId: Config.bar.workspaces.perMonitorWorkspaces ? (Hypr.monitorFor(screen).activeWorkspace?.id ?? 1) : Hypr.activeWsId
 
     readonly property int focusedWindowId: Niri.focusedWindow.id
 

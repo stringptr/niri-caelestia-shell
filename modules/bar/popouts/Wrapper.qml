@@ -34,8 +34,8 @@ Item {
         if (mode === "winfo") {
             detachedMode = mode;
         } else {
-            detachedMode = "any";
             queuedMode = mode;
+            detachedMode = "any";
         }
         focus = true;
     }
