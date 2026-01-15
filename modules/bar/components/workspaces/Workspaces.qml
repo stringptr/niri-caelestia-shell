@@ -34,6 +34,75 @@ StyledRect {
                 Niri.wsContextAnchor = root;
             }
         }
+        layer.enabled: root.blur > 0
+        layer.effect: MultiEffect {
+            blurEnabled: true
+            blurEnabled: true
+            blur: root.blur
+            blurMax: 32
+        }
+
+        Loader {
+            active: Config.bar.workspaces.occupiedBg
+
+            anchors.fill: parent
+            anchors.margins: Appearance.padding.small
+
+            sourceComponent: OccupiedBg {
+                workspaces: workspaces
+                occupied: root.occupied
+                groupOffset: root.groupOffset
+            }
+        }
+
+        ColumnLayout {
+            id: layout
+
+            anchors.centerIn: parent
+            spacing: Math.floor(Appearance.spacing.small / 2)
+
+            Repeater {
+                id: workspaces
+
+                model: Config.bar.workspaces.shown
+
+                Workspace {
+                    activeWsId: root.activeWsId
+                    occupied: root.occupied
+                    groupOffset: root.groupOffset
+                }
+            }
+        }
+
+        Loader {
+            anchors.horizontalCenter: parent.horizontalCenter
+            active: Config.bar.workspaces.activeIndicator
+
+            sourceComponent: ActiveIndicator {
+                activeWsId: root.activeWsId
+                workspaces: workspaces
+                mask: layout
+            }
+        }
+
+        MouseArea {
+            anchors.fill: layout
+            onClicked: event => {
+                const ws = layout.childAt(event.x, event.y).ws;
+                if (Hypr.activeWsId !== ws)
+                    Hypr.dispatch(`workspace ${ws}`);
+                else
+                    Hypr.dispatch("togglespecialworkspace special");
+            }
+        }
+
+        Behavior on scale {
+            Anim {}
+        }
+
+        Behavior on opacity {
+            Anim {}
+        }
     }
 
     Loader {
@@ -43,10 +112,21 @@ StyledRect {
         anchors.fill: parent
         anchors.margins: Appearance.padding.small
 
-        sourceComponent: OccupiedBg {
-            workspaces: workspaces
-            occupied: root.occupied
-            groupOffset: root.groupOffset
+        active: opacity > 0
+
+        scale: root.onSpecial ? 1 : 0.5
+        opacity: root.onSpecial ? 1 : 0
+
+        sourceComponent: SpecialWorkspaces {
+            screen: root.screen
+        }
+
+        Behavior on scale {
+            Anim {}
+        }
+
+        Behavior on opacity {
+            Anim {}
         }
     }
 

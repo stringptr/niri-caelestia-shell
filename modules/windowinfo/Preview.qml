@@ -48,7 +48,6 @@ Item {
         Loader {
             anchors.centerIn: parent
             active: !root.client
-            asynchronous: true
 
             sourceComponent: ColumnLayout {
                 spacing: 0

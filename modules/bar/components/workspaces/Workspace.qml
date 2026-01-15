@@ -57,7 +57,6 @@ ColumnLayout {
 
         visible: active
         active: root.hasWindows
-        asynchronous: true
 
         sourceComponent: DraggableWindowColumn {
             id: dragDropLayout
