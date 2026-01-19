@@ -733,6 +733,7 @@ Config lives in:
             "dndChanged": true,
             "gameModeChanged": true,
             "kbLayoutChanged": true,
+            "kbLimit": true,
             "numLockChanged": true,
             "vpnChanged": true,
             "nowPlaying": false
