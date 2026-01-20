@@ -739,12 +739,13 @@ Config lives in:
             "nowPlaying": false
         },
         "vpn": {
-            "enabled": false,
+            "enabled": true,
             "provider": [
                 {
                     "name": "wireguard",
                     "interface": "your-connection-name",
-                    "displayName": "Wireguard (Your VPN)"
+                    "displayName": "Wireguard (Your VPN)",
+                    "enabled": false
                 }
             ]
         }
