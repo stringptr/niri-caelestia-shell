@@ -481,8 +481,9 @@ Config lives in:
             "showBluetooth": true,
             "showKbLayout": false,
             "showMicrophone": false,
-            "showKbLayout": false,
-            "showNetwork": true
+            "showNetwork": true,
+            "showWifi": true,
+            "showLockStatus": true
         },
         "tray": {
             "background": false,
@@ -790,7 +791,7 @@ The module automatically adds Caelestia shell to the path with **full functional
 
 ### Need help or support?
 
-You can join the community Discord server for assistance and discussion:  
+You can join the community Discord server for assistance and discussion:
 https://discord.gg/BGDCFCmMBk
 
 ### My screen is flickering, help pls!
