@@ -70,7 +70,7 @@ Item {
                 wrapper: root.wrapper
                 network: networkPopout.item?.passwordNetwork ?? null
             }
-            
+
             Connections {
                 target: root.wrapper
                 function onCurrentNameChanged() {
@@ -91,7 +91,7 @@ Item {
                     }
                 }
             }
-            
+
             Connections {
                 target: networkPopout
                 function onItemChanged() {
@@ -132,7 +132,6 @@ Item {
                 wrapper: root.wrapper
             }
         }
-
 
         Popout {
             name: "lockstatus"
