@@ -44,9 +44,9 @@ Item {
                     //TODO: Add config option to choose between name/number/both for workspaces
 
                     const wsName = Niri.getWorkspaceNameByIndex(root.workspace.index) || (root.workspace.ws);
-                    const label = Config.bar.workspaces.label || root.workspace.ws;
-                    const occupiedLabel = Config.bar.workspaces.occupiedLabel || label;
-                    const activeLabel = root.workspace.activeWsId || (root.workspace.isOccupied ? occupiedLabel : label);
+                    const label = Config.bar.workspaces.label == "name" ? Niri.getWorkspaceNameByIndex(root.workspace.index) : root.workspace.ws;
+                    const occupiedLabel = Config.bar.workspaces.label == "name" ? Niri.getWorkspaceNameByIndex(root.workspace.index) :Config.bar.workspaces.occupiedLabel || label;
+                    const activeLabel = Config.bar.workspaces.label == "name" ? Niri.getWorkspaceNameByIndex(root.workspace.index) :root.workspace.activeWsId || (root.workspace.isOccupied ? occupiedLabel : label);
                     return root.workspace.activeWsId === root.workspace.ws ? activeLabel : root.workspace.isOccupied ? occupiedLabel : label;
                 }
 
