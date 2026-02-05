@@ -5,7 +5,8 @@ JsonObject {
     property int defaultExpireTimeout: 5000
     property real clearThreshold: 0.3
     property int expandThreshold: 20
-    property bool actionOnClick: false
+    property string rightClickAction: "close"
+    property string leftClickAction: "expand"
     property int groupPreviewNum: 3
     property bool openExpanded: false // Show the notifichation in expanded state when opening
     property Sizes sizes: Sizes {}

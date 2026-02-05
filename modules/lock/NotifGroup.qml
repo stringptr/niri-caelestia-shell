@@ -64,7 +64,7 @@ StyledRect {
 
                 ColouredIcon {
                     implicitSize: Math.round(Config.notifs.sizes.image * 0.6)
-                    source: Quickshell.iconPath(root.appIcon)
+                    source: root.appIcon.includes("/") ? root.appIcon : Quickshell.iconPath(root.appIcon)
                     colour: root.urgency === "critical" ? Colours.palette.m3onError : root.urgency === "low" ? Colours.palette.m3onSurface : Colours.palette.m3onSecondaryContainer
                     layer.enabled: root.appIcon.endsWith("symbolic")
                 }
@@ -108,7 +108,7 @@ StyledRect {
                     ColouredIcon {
                         anchors.centerIn: parent
                         implicitSize: Math.round(Config.notifs.sizes.badge * 0.6)
-                        source: Quickshell.iconPath(root.appIcon)
+                        source: root.appIcon.includes("/") ? root.appIcon : Quickshell.iconPath(root.appIcon)
                         colour: root.urgency === "critical" ? Colours.palette.m3onError : root.urgency === "low" ? Colours.palette.m3onSurface : Colours.palette.m3onSecondaryContainer
                         layer.enabled: root.appIcon.endsWith("symbolic")
                     }

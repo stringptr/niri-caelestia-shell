@@ -44,7 +44,7 @@ StyledRect {
         anchors.fill: parent
         hoverEnabled: true
         cursorShape: root.expanded && body.hoveredLink ? Qt.PointingHandCursor : pressed ? Qt.ClosedHandCursor : undefined
-        acceptedButtons: Qt.LeftButton | Qt.MiddleButton
+        acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
         preventStealing: true
 
         onEntered: root.modelData.timer.stop()
@@ -79,8 +79,35 @@ StyledRect {
             }
         }
         onClicked: event => {
-            if (!Config.notifs.actionOnClick || event.button !== Qt.LeftButton)
-                return;
+            function doAction(action: string) {
+                switch (action) {
+                    case "none":
+                        return;
+                    case "close":
+                        root.modelData.popup = false;
+                        break;
+                    case "expand":
+                        root.expanded = !root.expanded;
+                        break;
+                    case "action":
+                        const actions = root.modelData.actions;
+                        if (actions?.length === 1) actions[0].invoke();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            switch (event.button) {
+                case Qt.LeftButton:
+                    doAction(Config.notifs.leftClickAction);
+                    break;
+                case Qt.RightButton:
+                    doAction(Config.notifs.rightClickAction);
+                    break;
+                default:
+                    break;
+            }
 
             const actions = root.modelData.actions;
             if (actions?.length === 1)
