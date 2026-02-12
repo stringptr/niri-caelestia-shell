@@ -8,6 +8,7 @@ Singleton {
     id: root
 
     readonly property string home: Quickshell.env("HOME")
+    readonly property string documents: Quickshell.env("XDG_DOCUMENTS_DIR") || `${home}/Documents`
     readonly property string pictures: Quickshell.env("XDG_PICTURES_DIR") || `${home}/Pictures`
     readonly property string videos: Quickshell.env("XDG_VIDEOS_DIR") || `${home}/Videos`
 

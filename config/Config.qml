@@ -473,4 +473,25 @@ Singleton {
             property UserPaths paths: UserPaths {}
         }
     }
+
+    FileView {
+        path: Paths.palette
+        watchChanges: true
+        onFileChanged: reload()
+    }
+
+    FileView {
+        id: riceConfig
+        path: Paths.globalricedir + "/config.json"
+        watchChanges: true
+        onFileChanged: reload()
+
+        JsonAdapter {
+            id: riceConfigAdapter
+
+            property string scheme: "scheme-tonal-spot"
+            property string mode: "dark"
+            property string wallpaper: "$HOME/Pictures/Wallpapers/10.png"
+        }
+    }
 }

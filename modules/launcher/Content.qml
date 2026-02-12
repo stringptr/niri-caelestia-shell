@@ -94,6 +94,11 @@ Item {
                             currentItem.onClicked();
                         else
                             currentItem.modelData.onClicked(list.currentList);
+                    } else if (text.startsWith(Config.launcher.systemPrefix)) {
+                        if (text.startsWith(`${Config.launcher.systemPrefix}calc `))
+                            currentItem.onClicked();
+                        else
+                            currentItem.modelData.onClicked(list.currentList);
                     } else {
                         Apps.launch(currentItem.modelData);
                         root.visibilities.launcher = false;

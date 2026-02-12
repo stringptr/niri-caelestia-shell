@@ -1,3 +1,4 @@
+import qs.utils
 import Quickshell.Io
 
 JsonObject {
@@ -9,10 +10,12 @@ JsonObject {
     property Sizes sizes: Sizes {}
 
     component Commands: JsonObject {
-        property list<string> logout: ["loginctl", "terminate-user", ""]
-        property list<string> shutdown: ["systemctl", "poweroff"]
+        property list<string> lock: ["qs", "-c", Paths.config, "ipc", "call", "lock", "lock"]
+        property list<string> sleep: ["systemctl", "suspend"]
         property list<string> hibernate: ["systemctl", "hibernate"]
-        property list<string> reboot: ["systemctl", "reboot"]
+        property list<string> logout: ["loginctl", "terminate-user", ""]
+        property list<string> reboot: ["systemctl", "restart"]
+        property list<string> shutdown: ["systemctl", "poweroff"]
     }
 
     component Sizes: JsonObject {

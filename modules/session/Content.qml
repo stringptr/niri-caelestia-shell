@@ -16,12 +16,33 @@ Column {
     spacing: Appearance.spacing.large
 
     SessionButton {
-        id: logout
+        id: hibernate
 
-        icon: "logout"
-        command: Config.session.commands.logout
+        icon: "downloading"
+        command: Config.session.commands.hibernate
 
-        KeyNavigation.down: shutdown
+        KeyNavigation.up: shutdown
+        KeyNavigation.down: sleep
+    }
+
+    SessionButton {
+        id: sleep
+
+        icon: "sleep"
+        command: Config.session.commands.sleep
+
+        KeyNavigation.up: hibernate
+        KeyNavigation.down: lock
+    }
+
+    SessionButton {
+        id: lock
+
+        icon: "lock"
+        command: Config.session.commands.lock
+
+        KeyNavigation.up: sleep
+        KeyNavigation.down: logout
 
         Component.onCompleted: forceActiveFocus()
 
@@ -43,16 +64,6 @@ Column {
         }
     }
 
-    SessionButton {
-        id: shutdown
-
-        icon: "power_settings_new"
-        command: Config.session.commands.shutdown
-
-        KeyNavigation.up: logout
-        KeyNavigation.down: hibernate
-    }
-
     AnimatedImage {
         width: Config.session.sizes.button
         height: Config.session.sizes.button
@@ -66,12 +77,12 @@ Column {
     }
 
     SessionButton {
-        id: hibernate
+        id: logout
 
-        icon: "downloading"
-        command: Config.session.commands.hibernate
+        icon: "logout"
+        command: Config.session.commands.logout
 
-        KeyNavigation.up: shutdown
+        KeyNavigation.up: lock
         KeyNavigation.down: reboot
     }
 
@@ -81,7 +92,18 @@ Column {
         icon: "cached"
         command: Config.session.commands.reboot
 
-        KeyNavigation.up: hibernate
+        KeyNavigation.up: logout
+        KeyNavigation.down: shutdown
+    }
+
+    SessionButton {
+        id: shutdown
+
+        icon: "power_settings_new"
+        command: Config.session.commands.shutdown
+
+        KeyNavigation.up: reboot
+        KeyNavigation.down: hibernate
     }
 
     component SessionButton: StyledRect {

@@ -1,0 +1,1 @@
+/home/ia/.config/rice/color-palettes/matugen/quickshell.qml

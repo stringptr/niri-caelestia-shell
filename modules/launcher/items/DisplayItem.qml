@@ -1,16 +1,14 @@
-import "../services"
 import qs.components
 import qs.services
 import qs.config
-import Quickshell
-import Quickshell.Widgets
+import qs.modules.launcher.services
 import QtQuick
 
 Item {
     id: root
 
-    required property DesktopEntry modelData
-    required property PersistentProperties visibilities
+    required property Display.Profile modelData
+    required property var list
 
     implicitHeight: Config.launcher.sizes.itemHeight
 
@@ -18,11 +16,10 @@ Item {
     anchors.right: parent?.right
 
     StateLayer {
-        radius: Appearance.rounding.normal
+        radius: Appearance.rounding.small
 
         function onClicked(): void {
-            Apps.launch(root.modelData);
-            root.visibilities.launcher = false;
+            root.modelData?.onClicked(root.list);
         }
     }
 
@@ -32,11 +29,11 @@ Item {
         anchors.rightMargin: Appearance.padding.larger
         anchors.margins: Appearance.padding.smaller
 
-        IconImage {
+        MaterialIcon {
             id: icon
 
-            source: root.modelData?.icon ? (root.modelData.icon.includes("/") ? root.modelData.icon : Quickshell.iconPath(root.modelData.icon)) : ""
-            implicitSize: parent.height * 0.8
+            text: root.modelData?.icon ?? ""
+            font.pointSize: Appearance.font.size.extraLarge
 
             anchors.verticalCenter: parent.verticalCenter
         }
@@ -47,7 +44,7 @@ Item {
             anchors.verticalCenter: icon.verticalCenter
 
             implicitWidth: parent.width - icon.width
-            implicitHeight: name.implicitHeight + comment.implicitHeight
+            implicitHeight: name.implicitHeight + desc.implicitHeight
 
             StyledText {
                 id: name
@@ -57,9 +54,9 @@ Item {
             }
 
             StyledText {
-                id: comment
+                id: desc
 
-                text: (root.modelData?.comment || root.modelData?.genericName || root.modelData?.name) ?? ""
+                text: root.modelData?.desc ?? ""
                 font.pointSize: Appearance.font.size.small
                 color: Colours.palette.m3outline
 

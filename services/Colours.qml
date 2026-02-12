@@ -7,6 +7,7 @@ import Caelestia
 import Quickshell
 import Quickshell.Io
 import QtQuick
+import qs.palette as Pal
 
 Singleton {
     id: root

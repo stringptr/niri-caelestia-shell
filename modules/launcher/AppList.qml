@@ -58,6 +58,12 @@ StyledListView {
                     return action;
 
             return "actions";
+        } else if (text.startsWith(systemPrefix)) {
+            for (const action of ["battery", "performance", "display", "battery_profile", "battery_chargelimit", "performance", "performance_gpu", "display"])
+                if (text.startsWith(`${systemPrefix}${action} `))
+                    return action;
+
+            return "system";
         }
 
         return "apps";
@@ -108,7 +114,63 @@ StyledListView {
                 model.values: M3Variants.query(search.text)
                 root.delegate: variantItem
             }
-        }
+        },
+        State {
+            name: "system"
+
+            PropertyChanges {
+                model.values: System.query(search.text)
+                root.delegate: systemItem
+            }
+        },
+        State {
+            name: "battery"
+
+            PropertyChanges {
+                model.values: Battery.query(search.text)
+                root.delegate: batteryItem
+            }
+        },
+        State {
+            name: "battery_profile"
+
+            PropertyChanges {
+                model.values: BatteryProfile.query(search.text)
+                root.delegate: batteryProfileItem
+            }
+        },
+        State {
+            name: "battery_chargelimit"
+
+            PropertyChanges {
+                model.values: [80]
+                root.delegate: batteryChargeLimitItem
+            }
+        },
+        State {
+            name: "performance"
+
+            PropertyChanges {
+                model.values: Performance.query(search.text)
+                root.delegate: performanceItem
+            }
+        },
+        State {
+            name: "performance_gpu"
+
+            PropertyChanges {
+                model.values: PerformanceGPU.query(search.text)
+                root.delegate: performanceGpuItem
+            }
+        },
+        State {
+            name: "display"
+
+            PropertyChanges {
+                model.values: Display.query(search.text)
+                root.delegate: displayItem
+            }
+        },
     ]
 
     transitions: Transition {
@@ -252,6 +314,62 @@ StyledListView {
         id: variantItem
 
         VariantItem {
+            list: root
+        }
+    }
+
+    Component {
+        id: systemItem
+
+        SystemItem {
+            list: root
+        }
+    }
+
+    Component {
+        id: batteryItem
+
+        BatteryItem {
+            list: root
+        }
+    }
+
+    Component {
+        id: batteryProfileItem
+
+        BatteryProfileItem {
+            list: root
+        }
+    }
+
+    Component {
+        id: batteryChargeLimitItem
+
+        BatteryChargeLimitItem {
+            list: root
+        }
+    }
+
+    Component {
+        id: performanceItem
+
+        PerformanceItem {
+            list: root
+        }
+    }
+
+    Component {
+        id: performanceGpuItem
+
+        PerformanceGPUItem {
+            list: root
+        }
+    }
+
+    Component {
+        id: displayItem
+
+        DisplayItem {
             list: root
         }
     }
