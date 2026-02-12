@@ -39,15 +39,16 @@ Variants {
             WlrLayershell.exclusionMode: ExclusionMode.Ignore
             WlrLayershell.keyboardFocus: visibilities.launcher || visibilities.session ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
-            mask: Region {
-            mask: focusGrab.active || Hypr.focusedMonitor?.activeWorkspace?.lastIpcObject.windows > 0 ? inputMask : null
+            // mask: Region {
+            // mask: focusGrab.active || Hypr.focusedMonitor?.activeWorkspace?.lastIpcObject.windows > 0 ? inputMask : null
+            mask: inputMask
 
-            anchors.top: true
-            anchors.bottom: true
-            anchors.left: true
-            anchors.right: true
+              anchors.top: true
+              anchors.bottom: true
+              anchors.left: true
+              anchors.right: true
 
-            Region {
+              Region {
                 id: inputMask
 
                 x: bar.implicitWidth
@@ -58,11 +59,6 @@ Variants {
 
                 regions: regions.instances
             }
-
-            anchors.top: true
-            anchors.bottom: true
-            anchors.left: true
-            anchors.right: true
 
             Variants {
                 id: regions
