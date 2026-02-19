@@ -654,6 +654,7 @@ Config lives in:
             "wallpapers": false
         },
         "showOnHover": false,
+        "favouriteApps": [],
         "hiddenApps": []
     },
     "lock": {
