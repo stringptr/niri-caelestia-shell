@@ -18,8 +18,8 @@ Column {
     SessionButton {
         id: hibernate
 
-        icon: "downloading"
-        command: Config.session.commands.hibernate
+        icon: Config.session.icons.logout
+        command: Config.session.commands.logout
 
         KeyNavigation.up: shutdown
         KeyNavigation.down: sleep
@@ -64,6 +64,16 @@ Column {
         }
     }
 
+    SessionButton {
+        id: shutdown
+
+        icon: Config.session.icons.shutdown
+        command: Config.session.commands.shutdown
+
+        KeyNavigation.up: logout
+        KeyNavigation.down: hibernate
+    }
+
     AnimatedImage {
         width: Config.session.sizes.button
         height: Config.session.sizes.button
@@ -79,8 +89,8 @@ Column {
     SessionButton {
         id: logout
 
-        icon: "logout"
-        command: Config.session.commands.logout
+        icon: Config.session.icons.hibernate
+        command: Config.session.commands.hibernate
 
         KeyNavigation.up: lock
         KeyNavigation.down: reboot
@@ -89,7 +99,7 @@ Column {
     SessionButton {
         id: reboot
 
-        icon: "cached"
+        icon: Config.session.icons.reboot
         command: Config.session.commands.reboot
 
         KeyNavigation.up: logout
