@@ -693,6 +693,7 @@ Config lives in:
         ],
         "weatherLocation": "",
         "useFahrenheit": false,
+        "useFahrenheitPerformance": false,
         "useTwelveHourClock": false,
         "smartScheme": true,
         "visualiserBars": 45
