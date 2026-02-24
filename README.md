@@ -346,6 +346,7 @@ Config lives in:
         }
     },
     "general": {
+        "logo": "caelestia",
         "apps": {
             "terminal": ["foot"],
             "audio": ["pavucontrol"],
