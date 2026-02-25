@@ -41,24 +41,6 @@ StyledRect {
         cWs = currentWsIdx;
     }
 
-    property int cWs
-    property int lastWs
-
-    // Geometry tracking
-    property real leading: workspaces.itemAt(currentWsIdx)?.y ?? 0
-    property real trailing: workspaces.itemAt(currentWsIdx)?.y ?? 0
-
-    property real currentSize: workspaces.itemAt(currentWsIdx)?.size ?? 0
-    property real offset: Math.min(leading, trailing)
-
-    property real size: {
-        const s = Math.abs(leading - trailing) + currentSize;
-        if (Config.bar.workspaces.activeTrail && lastWs > currentWsIdx) {
-            const ws = workspaces.itemAt(lastWs);
-            return ws ? Math.min(ws.y + ws.size - offset, s) : 0;
-        }
-        return s;
-    }
 
     property bool isContextActiveInWs: (Niri.wsContextType === "workspace" && Niri.wsContextAnchor?.index === root.currentWsIdx)
     property bool isWorkspacesContextActive: (Niri.wsContextType === "workspaces") && Niri.wsContextAnchor

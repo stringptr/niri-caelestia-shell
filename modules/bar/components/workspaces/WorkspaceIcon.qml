@@ -13,9 +13,9 @@ Item {
     property bool popupActive: (Niri.wsContextAnchor === root) || (Niri.wsContextAnchor === workspace) || (Niri.wsContextType === "workspaces")
 
     Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-    Layout.preferredHeight: Config.bar.workspaces.windowIconSize + Config.bar.workspaces.windowIconGap
+    Layout.preferredHeight: Config.bar.workspaces.windowIconSize + Config.bar.workspaces.windowIconGap * 0.5
 
-    implicitWidth: Config.bar.workspaces.windowIconSize + Config.bar.workspaces.windowIconGap + (popupActive ? Config.bar.workspaces.windowContextWidth : 0)
+    implicitWidth: Config.bar.workspaces.windowIconSize + (popupActive ? Config.bar.workspaces.windowContextWidth : 0)
     Behavior on implicitWidth {
         Anim {
             easing.bezierCurve: Appearance.anim.curves.emphasized
@@ -31,8 +31,8 @@ Item {
 
         Item {
             Layout.alignment: Qt.AlignVCenter
-            Layout.preferredWidth: Config.bar.workspaces.windowIconSize + Config.bar.workspaces.windowIconGap
-            Layout.preferredHeight: Config.bar.workspaces.windowIconSize + Config.bar.workspaces.windowIconGap
+            Layout.preferredWidth: Config.bar.workspaces.windowIconSize + Config.bar.workspaces.windowIconGap * 0.5
+            Layout.preferredHeight: Config.bar.workspaces.windowIconSize + Config.bar.workspaces.windowIconGap * 0.5
 
             StyledText {
                 id: indicator
