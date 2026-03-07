@@ -16,7 +16,7 @@ Column {
     spacing: Appearance.spacing.large
 
     SessionButton {
-        id: hibernate
+        id: logout
 
         icon: Config.session.icons.logout
         command: Config.session.commands.logout
@@ -28,21 +28,21 @@ Column {
     SessionButton {
         id: sleep
 
-        icon: "sleep"
+        icon: Config.session.icons.sleep
         command: Config.session.commands.sleep
 
-        KeyNavigation.up: hibernate
+        KeyNavigation.up: logout
         KeyNavigation.down: lock
     }
 
     SessionButton {
         id: lock
 
-        icon: "lock"
+        icon: Config.session.icons.lock
         command: Config.session.commands.lock
 
         KeyNavigation.up: sleep
-        KeyNavigation.down: logout
+        KeyNavigation.down: hibernate
 
         Component.onCompleted: forceActiveFocus()
 
@@ -64,16 +64,6 @@ Column {
         }
     }
 
-    SessionButton {
-        id: shutdown
-
-        icon: Config.session.icons.shutdown
-        command: Config.session.commands.shutdown
-
-        KeyNavigation.up: logout
-        KeyNavigation.down: hibernate
-    }
-
     AnimatedImage {
         width: Config.session.sizes.button
         height: Config.session.sizes.button
@@ -87,7 +77,7 @@ Column {
     }
 
     SessionButton {
-        id: logout
+        id: hibernate
 
         icon: Config.session.icons.hibernate
         command: Config.session.commands.hibernate
@@ -102,18 +92,18 @@ Column {
         icon: Config.session.icons.reboot
         command: Config.session.commands.reboot
 
-        KeyNavigation.up: logout
+        KeyNavigation.up: hibernate
         KeyNavigation.down: shutdown
     }
 
     SessionButton {
         id: shutdown
 
-        icon: "power_settings_new"
+        icon: Config.session.icons.shutdown
         command: Config.session.commands.shutdown
 
         KeyNavigation.up: reboot
-        KeyNavigation.down: hibernate
+        KeyNavigation.down: logout
     }
 
     component SessionButton: StyledRect {

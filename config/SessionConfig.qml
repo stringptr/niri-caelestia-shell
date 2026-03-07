@@ -15,6 +15,8 @@ JsonObject {
         property string shutdown: "power_settings_new"
         property string hibernate: "downloading"
         property string reboot: "cached"
+        property string sleep: "bedtime"
+        property string lock: "lock"
     }
 
     component Commands: JsonObject {
