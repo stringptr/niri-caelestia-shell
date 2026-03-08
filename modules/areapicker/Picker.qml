@@ -70,8 +70,8 @@ MouseArea {
             } else {
                 Quickshell.execDetached(["swappy", "-f", path]);
             }
+            closeAnim.start();
         });
-        closeAnim.start();
     }
 
     onClientsChanged: checkClientRects(mouseX, mouseY)
