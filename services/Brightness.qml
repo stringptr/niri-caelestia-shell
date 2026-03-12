@@ -70,7 +70,7 @@ Singleton {
     Variants {
         id: variants
 
-        model: Quickshell.screens
+        model: Quickshell.screens // Don't respect excluded screens cause ipc
 
         Monitor {}
     }
