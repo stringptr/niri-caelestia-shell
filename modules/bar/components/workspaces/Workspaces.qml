@@ -25,6 +25,13 @@ StyledRect {
     readonly property bool onSpecial: false
 
     readonly property int focusedWindowId: Niri.focusedWindow?.id ?? 0
+    // readonly property var occupied: {
+    //     const occ = {};
+    //     for (const ws of Hypr.workspaces.values)
+    //         occ[ws.id] = ws.lastIpcObject.windows > 0;
+    //     return occ;
+    // }
+//     readonly property int groupOffset: Math.floor((activeWsId - 1) / Config.bar.workspaces.shown) * Config.bar.workspaces.shown
 
     implicitHeight: layout.implicitHeight + Appearance.padding.small * 2
     implicitWidth: Config.bar.sizes.innerWidth
