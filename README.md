@@ -426,7 +426,8 @@ Config lives in:
     "bar": {
         "activeWindow": {
             "compact": false,
-            "inverted": false
+            "inverted": false,
+            "showOnHover": true
         },
         "clock": {
             "showIcon": false
