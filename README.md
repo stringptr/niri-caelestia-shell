@@ -424,6 +424,10 @@ Config lives in:
         }
     },
     "bar": {
+        "activeWindow": {
+            "compact": false,
+            "inverted": false
+        },
         "clock": {
             "showIcon": false
         },
