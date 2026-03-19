@@ -189,6 +189,9 @@ MouseArea {
     }
 
     Loader {
+        id: screencopy
+
+        asynchronous: true
         anchors.fill: parent
 
         active: root.loader.freeze
