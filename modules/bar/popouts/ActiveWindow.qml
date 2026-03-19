@@ -39,6 +39,7 @@ Item {
             IconImage {
                 id: icon
 
+                asynchronous: true
                 Layout.alignment: Qt.AlignVCenter
                 implicitSize: details.implicitHeight
                 source: Icons.getAppIcon(Niri.focusedWindowClass ?? "", "image-missing")

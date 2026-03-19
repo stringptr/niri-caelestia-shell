@@ -56,7 +56,9 @@ StyledRect {
         //     blurMax: 32
         // }
         //
+        //
         // Loader {
+        //     asynchronous: true
         //     active: Config.bar.workspaces.occupiedBg
         //
         //     anchors.fill: parent
@@ -89,6 +91,7 @@ StyledRect {
         // }
         //
         // Loader {
+        //     asynchronous: true
         //     anchors.horizontalCenter: parent.horizontalCenter
         //     active: Config.bar.workspaces.activeIndicator
         //
@@ -121,6 +124,8 @@ StyledRect {
 
     Loader {
         active: Config.bar.workspaces.occupiedBg
+        asynchronous: true
+
         asynchronous: true
 
         anchors.fill: parent

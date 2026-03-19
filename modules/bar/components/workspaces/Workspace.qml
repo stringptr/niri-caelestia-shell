@@ -64,6 +64,8 @@ ColumnLayout {
     // Loader {
     //     id: windows
     //
+    //     asynchronous: true
+    //
     //     Layout.alignment: Qt.AlignHCenter
     //     Layout.fillHeight: true
     //     Layout.topMargin: -Config.bar.sizes.innerWidth / 10
@@ -74,25 +76,25 @@ ColumnLayout {
     //     sourceComponent: Column {
     //         spacing: 0
     //
-    //         add: Transition {
-    //             Anim {
-    //                 properties: "scale"
-    //                 from: 0
-    //                 to: 1
-    //                 easing.bezierCurve: Appearance.anim.curves.standardDecel
-    //             }
-    //         }
-    //
-    //         move: Transition {
-    //             Anim {
-    //                 properties: "scale"
-    //                 to: 1
-    //                 easing.bezierCurve: Appearance.anim.curves.standardDecel
-    //             }
-    //             Anim {
-    //                 properties: "x,y"
-    //             }
-    //         }
+            // add: Transition {
+            //     Anim {
+            //         properties: "scale"
+            //         from: 0
+            //         to: 1
+            //         easing.bezierCurve: Appearance.anim.curves.standardDecel
+            //     }
+            // }
+            //
+            // move: Transition {
+            //     Anim {
+            //         properties: "scale"
+            //         to: 1
+            //         easing.bezierCurve: Appearance.anim.curves.standardDecel
+            //     }
+            //     Anim {
+            //         properties: "x,y"
+            //     }
+            // }
     //
     //         Repeater {
     //             model: ScriptModel {
