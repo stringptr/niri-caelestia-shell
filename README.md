@@ -430,7 +430,9 @@ Config lives in:
             "showOnHover": true
         },
         "clock": {
-            "showIcon": false
+            "background": false,
+            "showDate": false,
+            "showIcon": true
         },
         "dragThreshold": 20,
         "entries": [
