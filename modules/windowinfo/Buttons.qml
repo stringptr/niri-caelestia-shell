@@ -221,6 +221,8 @@ ColumnLayout {
                     easing.bezierCurve: Appearance.anim.curves.standard
                 }
             }
+
+            color: parent.onColor
         }
 
         StyledText {

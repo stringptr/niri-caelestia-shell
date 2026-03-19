@@ -74,11 +74,11 @@ Item {
                 Layout.alignment: Qt.AlignVCenter
 
                 StateLayer {
-                    radius: Appearance.rounding.normal
-
                     function onClicked(): void {
                         root.wrapper.detach("winfo");
                     }
+
+                    radius: Appearance.rounding.normal
                 }
 
                 MaterialIcon {
