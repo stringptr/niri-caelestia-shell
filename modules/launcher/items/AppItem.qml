@@ -36,7 +36,8 @@ Item {
         IconImage {
             id: icon
 
-            source: root.modelData?.icon ? (root.modelData.icon.includes("/") ? root.modelData.icon : Quickshell.iconPath(root.modelData.icon)) : ""
+            source: root.modelData?.icon ? (root.modelData.icon.includes("/") ? root.modelData.icon : Quickshell.iconPath(root.modelData.icon)) : Quickshell.iconPath(root.modelData?.icon, "image-missing")
+            asynchronous: true
             implicitSize: parent.height * 0.8
 
             anchors.verticalCenter: parent.verticalCenter
@@ -74,6 +75,7 @@ Item {
         Loader {
             id: favouriteIcon
 
+            asynchronous: true
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             active: modelData && Strings.testRegexList(Config.launcher.favouriteApps, modelData.id)
