@@ -133,6 +133,7 @@ ColumnLayout {
                 color: Niri.focusedWindow.is_floating ? Colours.palette.m3primary : Colours.palette.m3secondaryContainer
                 onColor: Niri.focusedWindow.is_floating ? Colours.palette.m3onPrimary : Colours.palette.m3onSecondaryContainer
                 text: root.client?.is_floating ? qsTr("Tile") : qsTr("Float")
+                //     text: root.client?.lastIpcObject.floating ? qsTr("Tile") : qsTr("Float")
                 icon: root.client?.is_floating ? "grid_view" : "picture_in_picture"
 
                 function onClicked(): void {
@@ -142,6 +143,7 @@ ColumnLayout {
 
             Loader {
                 active: root.client?.is_floating
+                // active: root.client?.lastIpcObject.floating
                 asynchronous: true
                 Layout.fillWidth: active
                 visible: active
