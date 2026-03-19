@@ -47,6 +47,7 @@ Item {
 
         Popout {
             id: networkPopout
+
             name: "network"
             sourceComponent: Network {
                 wrapper: root.wrapper
@@ -64,9 +65,11 @@ Item {
 
         Popout {
             id: passwordPopout
+
             name: "wirelesspassword"
             sourceComponent: WirelessPassword {
                 id: passwordComponent
+
                 wrapper: root.wrapper
                 network: networkPopout.item?.passwordNetwork ?? null
             }
