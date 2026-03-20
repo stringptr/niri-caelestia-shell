@@ -140,7 +140,7 @@ Variants {
                 }
             }
 
-            PersistentProperties {
+            DrawerVisibilities {
                 id: visibilities
 
                 property bool bar
