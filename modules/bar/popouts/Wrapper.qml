@@ -123,12 +123,12 @@ Item {
         anchors.centerIn: parent
 
         sourceComponent: ControlCenter {
-            screen: root.screen
-            active: root.queuedMode
-
             function close(): void {
                 root.close();
             }
+
+            screen: root.screen
+            active: root.queuedMode
         }
     }
 

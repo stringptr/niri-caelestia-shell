@@ -54,8 +54,6 @@ Searcher {
         })
 
     IpcHandler {
-        target: "wallpaper"
-
         function get(): string {
             return root.actualCurrent;
         }
@@ -67,6 +65,8 @@ Searcher {
         function list(): string {
             return root.list.map(w => w.path).join("\n");
         }
+
+        target: "wallpaper"
     }
 
     FileView {

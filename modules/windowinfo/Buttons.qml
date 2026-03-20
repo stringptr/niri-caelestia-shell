@@ -47,6 +47,10 @@ ColumnLayout {
                     readonly property int wsId: Math.floor((Niri.focusedWorkspaceIndex) / 10) * 10 + index + 1
                     readonly property bool isCurrent: (wsId - 1) % 10 === Niri.focusedWorkspaceIndex
 
+                    function onClicked(): void {
+                        Hypr.dispatch(`movetoworkspace ${wsId},address:0x${root.client?.address}`);
+                    }
+
                     color: isCurrent ? Colours.tPalette.m3surfaceContainerHighest : Colours.palette.m3tertiaryContainer
                     onColor: isCurrent ? Colours.palette.m3onSurface : Colours.palette.m3onTertiaryContainer
                     text: (Niri.currentOutputWorkspaces[wsId - 1].name) || wsId
@@ -135,10 +139,18 @@ ColumnLayout {
                 text: root.client?.is_floating ? qsTr("Tile") : qsTr("Float")
                 //     text: root.client?.lastIpcObject.floating ? qsTr("Tile") : qsTr("Float")
                 icon: root.client?.is_floating ? "grid_view" : "picture_in_picture"
+                
+                // function onClicked(): void {
+                //     Hypr.dispatch(`togglefloating address:0x${root.client?.address}`);
+                // }
 
                 function onClicked(): void {
                     Niri.toggleWindowFloating();
                 }
+
+                color: Colours.palette.m3secondaryContainer
+                onColor: Colours.palette.m3onSecondaryContainer
+                text: root.client?.lastIpcObject.pinned ? qsTr("Unpin") : qsTr("Pin")
             }
 
             Loader {
@@ -185,6 +197,10 @@ ColumnLayout {
                     Niri.closeFocusedWindow();
                 }
             }
+
+            color: Colours.palette.m3errorContainer
+            onColor: Colours.palette.m3onErrorContainer
+            text: qsTr("Kill")
         }
     }
 

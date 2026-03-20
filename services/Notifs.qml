@@ -113,8 +113,6 @@ Singleton {
     // }
 
     IpcHandler {
-        target: "notifs"
-
         function clear(): void {
             for (const notif of root.list.slice())
                 notif.close();
@@ -135,6 +133,8 @@ Singleton {
         function disableDnd(): void {
             props.dnd = false;
         }
+
+        target: "notifs"
     }
 
     component Notif: QtObject {
@@ -226,8 +226,6 @@ Singleton {
         }
 
         readonly property Connections conn: Connections {
-            target: notif.notification
-
             function onClosed(): void {
                 notif.close();
             }
@@ -281,6 +279,8 @@ Singleton {
             function onHintsChanged(): void {
                 notif.hints = notif.notification.hints;
             }
+
+            target: notif.notification
         }
 
         function updateTimeStr(): void {

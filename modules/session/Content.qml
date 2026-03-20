@@ -53,10 +53,7 @@ Column {
             //     if (root.visibilities.session)
             //         lock.focus = true;
             // }
-            //
-            // function onLauncherChanged(): void {
-            //     if (root.visibilities.session && !root.visibilities.launcher)
-            //         lock.focus = true;
+
             function onLauncherChanged(): void {
                 if (!root.visibilities.launcher)
                     logout.forceActiveFocus();

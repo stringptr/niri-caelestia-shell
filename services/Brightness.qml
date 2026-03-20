@@ -108,8 +108,6 @@ Singleton {
     // }
 
     IpcHandler {
-        target: "brightness"
-
         function get(): real {
             return getFor("active");
         }
@@ -158,6 +156,8 @@ Singleton {
 
             return `Set monitor ${monitor.modelData.name} brightness to ${+monitor.brightness.toFixed(2)}`;
         }
+
+        target: "brightness"
     }
 
     component Monitor: QtObject {
