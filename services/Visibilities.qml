@@ -2,7 +2,6 @@ pragma Singleton
 
 import qs.services
 import Quickshell
-import Quickshell.Hyprland
 
 Singleton {
     property var screens: new Map()
