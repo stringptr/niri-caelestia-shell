@@ -20,7 +20,16 @@ StyledRect {
     readonly property int groupOffset: {
         const focusedIdx = Niri.getFocusedWorkspaceIndexForScreen(screen.name);
         return Math.floor(focusedIdx / root.shown) * root.shown;
+    // readonly property bool onSpecial: (Config.bar.workspaces.perMonitorWorkspaces ? Hypr.monitorFor(screen) : Hypr.focusedMonitor)?.lastIpcObject.specialWorkspace?.name !== ""
+    // readonly property int activeWsId: Config.bar.workspaces.perMonitorWorkspaces ? (Hypr.monitorFor(screen).activeWorkspace?.id ?? 1) : Hypr.activeWsId
+    //
+    // readonly property var occupied: {
+    //     const occ = {};
+    //     for (const ws of Hypr.workspaces.values)
+    //         occ[ws.id] = ws.lastIpcObject.windows > 0;
+    //     return occ;
     }
+
     readonly property int shown: Math.min(Config.bar.workspaces.shown, Niri.getWorkspaceCountForScreen(screen.name))
     readonly property bool onSpecial: false
 
@@ -105,7 +114,7 @@ StyledRect {
         // MouseArea {
         //     anchors.fill: layout
         //     onClicked: event => {
-        //         const ws = layout.childAt(event.x, event.y).ws;
+        //         const ws = (layout.childAt(event.x, event.y) as Workspace)?.ws;
         //         if (Hypr.activeWsId !== ws)
         //             Hypr.dispatch(`workspace ${ws}`);
         //         else
