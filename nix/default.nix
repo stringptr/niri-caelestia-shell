@@ -15,15 +15,12 @@
   libqalculate,
   fftw,
   bash,
-  hyprland,
   material-symbols,
   rubik,
-  nerd-fonts,
   qt6,
   quickshell,
   aubio,
   libcava,
-  fftw,
   pipewire,
   xkeyboard-config,
   cmake,
@@ -48,13 +45,12 @@
       wl-clipboard
       libqalculate
       bash
-      hyprland
     ]
     ++ extraRuntimeDeps
     ++ lib.optional withCli caelestia-cli;
 
   fontconfig = makeFontsConf {
-    fontDirectories = [material-symbols rubik nerd-fonts.caskaydia-cove];
+    fontDirectories = [material-symbols rubik];
   };
 
   cmakeBuildType =
