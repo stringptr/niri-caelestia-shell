@@ -7,7 +7,7 @@ import Caelestia
 import Quickshell
 import Quickshell.Io
 import QtQuick
-import "../palette" as Pal
+import "../palette/Palette" as Pal
 
 Singleton {
     id: root
