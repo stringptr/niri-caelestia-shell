@@ -540,6 +540,47 @@ Singleton {
         return windows.filter(window => window.workspace_id === workspaceId);
     }
 
+    function getWorkspacesForScreen(screenName: string): var {
+        if (!screenName || !root.allWorkspaces) return [];
+        return root.allWorkspaces.filter(w => w.output === screenName);
+    }
+
+    function getFocusedWorkspaceIndexForScreen(screenName: string): int {
+        if (!screenName || !root.allWorkspaces) return 0;
+        const screenWorkspaces = root.allWorkspaces.filter(w => w.output === screenName);
+        if (screenWorkspaces.length === 0) return 0;
+        const idx = screenWorkspaces.findIndex(w => w.is_focused);
+        return idx >= 0 ? idx : 0;
+    }
+
+    function getStartingIdxForScreen(screenName: string): int {
+        const screenWorkspaces = getWorkspacesForScreen(screenName);
+        return screenWorkspaces.length > 0 ? screenWorkspaces[0].idx : 1;
+    }
+
+    function getActiveWsIdForScreen(screenName: string): int {
+        const screenWorkspaces = getWorkspacesForScreen(screenName);
+        if (screenWorkspaces.length === 0) return 1;
+        const idx = screenWorkspaces.findIndex(w => w.is_focused);
+        if (idx >= 0) return idx + 1;
+        return 1;
+    }
+
+    function getWorkspaceHasWindowsForScreen(screenName: string, groupOffset: int, shown: int): var {
+        const screenWorkspaces = getWorkspacesForScreen(screenName);
+        const result = {};
+        for (let i = 0; i < shown; i++) {
+            const wsNum = groupOffset + i + 1;
+            const ws = screenWorkspaces[groupOffset + i];
+            result[wsNum] = ws ? ws.active_window_id !== "" : false;
+        }
+        return result;
+    }
+
+    function getWsNumForPosition(screenName: string, pos: int): int {
+        return pos + 1;
+    }
+
     function switchToWorkspace(workspaceId) {
         if (!niriAvailable)
             return false;
@@ -764,6 +805,10 @@ Singleton {
 
     function getWorkspaceCount() {
         return allWorkspaces.length;
+    }
+
+    function getWorkspaceCountForScreen(screenName: string): int {
+        return getWorkspacesForScreen(screenName).length;
     }
 
     function getOccupiedWorkspaceCount() {
