@@ -181,6 +181,7 @@ StyledRect {
             workspaces: workspaces
             mask: layout
             groupOffset: root.groupOffset
+            screen: root.screen.name
         }
     }
 
