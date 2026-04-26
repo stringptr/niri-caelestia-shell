@@ -572,7 +572,12 @@ Singleton {
         for (let i = 0; i < shown; i++) {
             const wsNum = groupOffset + i + 1;
             const ws = screenWorkspaces[groupOffset + i];
-            result[wsNum] = ws ? ws.active_window_id !== "" : false;
+            if (ws) {
+                const wsWindows = getWindowsByWorkspaceId(ws.id);
+                result[wsNum] = wsWindows && wsWindows.length > 0;
+            } else {
+                result[wsNum] = false;
+            }
         }
         return result;
     }
