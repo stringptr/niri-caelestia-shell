@@ -1,0 +1,1 @@
+../../../rice/color-palettes/matugen/quickshell.qml

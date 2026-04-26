@@ -3,11 +3,11 @@ pragma ComponentBehavior: Bound
 
 import qs.config
 import qs.utils
+import qs.palette as Pal
 import Caelestia
 import Quickshell
 import Quickshell.Io
 import QtQuick
-import "../palette/Palette" as Pal
 
 Singleton {
     id: root
