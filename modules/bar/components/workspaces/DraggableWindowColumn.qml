@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import qs.services
 import qs.config
+import Quickshell
 import QtQuick
 import qs.components
 
@@ -27,16 +28,20 @@ Item {
     required property int idx
     required property int groupOffset
     required property Item windowPopoutSignal
+    required property ShellScreen screen
 
     property bool isWsFocused: root.activeWsId === root.ws
 
     property var wsWindows: {
-        const niriWorkspace = Niri.currentOutputWorkspaces[root.idx + root.groupOffset];
+        const screenWorkspaces = Niri.getWorkspacesForScreen(screen.name);
+        const niriWorkspace = screenWorkspaces[root.idx + root.groupOffset];
+        if (!niriWorkspace) return [];
         return Niri.getWindowsByWorkspaceId(niriWorkspace.id);
     }
 
     function updateGroupedWindowsModel() {
-        const niriWorkspace = Niri.currentOutputWorkspaces[root.idx + root.groupOffset];
+        const screenWorkspaces = Niri.getWorkspacesForScreen(screen.name);
+        const niriWorkspace = screenWorkspaces[root.idx + root.groupOffset];
         if (!niriWorkspace)
             return;
 

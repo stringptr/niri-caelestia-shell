@@ -1,8 +1,9 @@
 pragma ComponentBehavior: Bound
 
 import qs.components
-// import qs.components.effects
+import qs.services
 import qs.config
+import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
@@ -16,10 +17,12 @@ ColumnLayout {
     required property int activeWsId
 
     required property Item windowPopoutSignal
+    readonly property ShellScreen screen: windowPopoutSignal.screen
 
-    readonly property bool isWorkspace: true // Flag for finding workspace children
+    readonly property bool isWorkspace: true
     readonly property int size: isWorkspace ? implicitHeight + (hasWindows ? Appearance.padding.small : 0) : 0
-    readonly property int ws: groupOffset + index + 1
+    readonly property int pos: groupOffset + index
+    readonly property int ws: Niri.getWsNumForPosition(screen.name, pos)
     readonly property bool isOccupied: occupied[ws] ?? false
     readonly property bool hasWindows: isOccupied && Config.bar.workspaces.showWindows
 
@@ -69,6 +72,7 @@ ColumnLayout {
             windowPopoutSignal: root.windowPopoutSignal
             idx: root.index
             groupOffset: root.groupOffset
+            screen: root.windowPopoutSignal.screen
         }
     }
 }

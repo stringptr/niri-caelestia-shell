@@ -116,7 +116,7 @@ Item {
                 property int windowCount: iconItem.windowCount
                 font.pointSize: ((iconItem.isFocused && iconItem.isWsFocused)) ? Config.bar.workspaces.windowIconSize - Appearance.padding.small : Config.bar.workspaces.windowIconSize - Appearance.padding.small * 2
                 grade: 0
-                text: Icons.getAppCategoryIcon(windowData.app_id, "help_center")
+                text: Icons.getAppCategoryIcon(windowData?.app_id ?? "", "help_center")
                 color: (iconItem.isWsFocused ? Colours.palette.m3onPrimary : Colours.palette.m3onSurfaceVariant)
                 Behavior on font.pointSize {
                     Anim {
@@ -130,6 +130,10 @@ Item {
     }
 
     property alias dgprw: dragPreview
+
+    Component.onCompleted: {
+        console.log("WindowIcon completed:", windowData?.app_id, "isWsFocused:", isWsFocused);
+    }
 
     StyledRect {
         id: dragPreview

@@ -3,6 +3,7 @@ pragma ComponentBehavior: Bound
 import qs.services
 import qs.config
 import qs.components
+import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
@@ -11,14 +12,19 @@ import "context"
 StyledRect {
     id: root
 
-    // required property ShellScreen screen
+    required property ShellScreen screen
 
-    readonly property int activeWsId: Niri.focusedWorkspaceIndex + 1
-    readonly property var occupied: Niri.workspaceHasWindows
-    readonly property int groupOffset: Math.floor((Niri.focusedWorkspaceIndex) / Config.bar.workspaces.shown) * Config.bar.workspaces.shown
-    readonly property bool onSpecial: (Config.bar.workspaces.perMonitorWorkspaces ? Hypr.monitorFor(screen) : Hypr.focusedMonitor)?.lastIpcObject?.specialWorkspace?.name !== ""
+    readonly property var screenWorkspaces: Niri.getWorkspacesForScreen(screen.name)
+    readonly property int activeWsId: Niri.getActiveWsIdForScreen(screen.name)
+    readonly property var occupied: Niri.getWorkspaceHasWindowsForScreen(screen.name, groupOffset, shown)
+    readonly property int groupOffset: {
+        const focusedIdx = Niri.getFocusedWorkspaceIndexForScreen(screen.name);
+        return Math.floor(focusedIdx / root.shown) * root.shown;
+    }
+    readonly property int shown: Math.min(Config.bar.workspaces.shown, Niri.getWorkspaceCountForScreen(screen.name))
+    readonly property bool onSpecial: false
 
-    readonly property int focusedWindowId: Niri.focusedWindow.id
+    readonly property int focusedWindowId: Niri.focusedWindow?.id ?? 0
 
     implicitHeight: layout.implicitHeight + Appearance.padding.small * 2
     implicitWidth: Config.bar.sizes.innerWidth
@@ -191,7 +197,7 @@ StyledRect {
         Repeater {
             id: workspaces
 
-            model: Config.bar.workspaces.shown > Niri.getWorkspaceCount() ? Niri.getWorkspaceCount() : Config.bar.workspaces.shown
+            model: root.shown
 
             Workspace {
                 activeWsId: root.activeWsId
