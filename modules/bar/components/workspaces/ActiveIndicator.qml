@@ -11,6 +11,7 @@ StyledRect {
     required property Repeater workspaces
     required property Item mask
     required property int groupOffset
+    required property string screen
 
     readonly property int currentWsIdx: {
         let i = activeWsId - 1;
@@ -123,6 +124,79 @@ StyledRect {
             }
 
             function computeFocusedY() {
+                if (root.screen && root.groupOffset !== undefined) {
+                    return computeFocusedYPerScreen();
+                }
+                return computeFocusedYLegacy();
+            }
+
+            function computeFocusedYPerScreen() {
+                const focusedWindow = Niri.focusedWindow;
+                if (!focusedWindow)
+                    return Appearance.spacing.large / 2;
+
+                const screenName = root.screen;
+                if (!screenName)
+                    return Appearance.spacing.large / 2;
+
+                // Get workspaces specifically for this screen
+                const screenWorkspaces = Niri.getWorkspacesForScreen(screenName);
+                if (screenWorkspaces.length === 0)
+                    return Appearance.spacing.large / 2;
+
+                // Find the current workspace within this screen's group
+                const wsIndex = root.groupOffset + root.currentWsIdx;
+                if (wsIndex < 0 || wsIndex >= screenWorkspaces.length)
+                    return Appearance.spacing.large / 2;
+
+                const niriWorkspace = screenWorkspaces[wsIndex];
+                if (!niriWorkspace)
+                    return Appearance.spacing.large / 2;
+
+                const currentWorkspaceId = niriWorkspace.id;
+
+                // Filter all windows to find those in this workspace
+                const allWindows = Niri.windows;
+                var wsWindows = [];
+                if (allWindows) {
+                    for (var i = 0; i < allWindows.length; i++) {
+                        if (allWindows[i].workspace_id === currentWorkspaceId) {
+                            wsWindows.push(allWindows[i]);;
+                        }
+                    }
+                }
+                if (!wsWindows || wsWindows.length === 0)
+                    return Appearance.spacing.large / 2;
+
+                const sorted = wsWindows.sort((a, b) => {
+                    const aCol = a.layout?.pos_in_scrolling_layout[0] ?? 0;
+                    const bCol = b.layout?.pos_in_scrolling_layout[0] ?? 0;
+                    const aRow = a.layout?.pos_in_scrolling_layout[1] ?? 0;
+                    const bRow = b.layout?.pos_in_scrolling_layout[1] ?? 0;
+                    if (aCol !== bCol) return aCol - bCol;
+                    return aRow - bRow;
+                });
+
+                let focusedIndex = -1;
+                if (Config.bar.workspaces.groupIconsByApp) {
+                    const useLayoutGrouping = Config.bar.workspaces.groupingRespectsLayout;
+                    const grouped = useLayoutGrouping ? Niri.groupWindowsByLayoutAndId(sorted) : Niri.groupWindowsByApp(sorted);
+                    for (let i = 0; i < grouped.length; i++) {
+                        if (grouped[i].windows.some(w => w.id === focusedWindow.id)) {
+                            focusedIndex = i;
+                            break;
+                        }
+                    }
+                } else {
+                    focusedIndex = sorted.findIndex(w => w.id === focusedWindow.id);
+                }
+
+                if (focusedIndex === -1) focusedIndex = 0;
+
+                return (Config.bar.sizes.innerWidth - Appearance.padding.small * 2.5) + focusedIndex * (Config.bar.workspaces.windowIconSize + Config.bar.workspaces.windowIconGap);
+            }
+
+            function computeFocusedYLegacy() {
                 const focusedWindow = Niri.focusedWindow;
                 if (!focusedWindow)
                     return Appearance.spacing.large / 2;
