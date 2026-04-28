@@ -19,6 +19,10 @@ Item {
 
     readonly property bool valid: (limit >= 60 && limit <= 80 && limit % 5 == 0) || limit == 100
 
+    function onClicked(): void {
+        applyLimit();
+    }
+
     function applyLimit(): void {
         if (!valid)
             return;
@@ -73,7 +77,7 @@ Item {
             }
 
             color: {
-                if (!rawInput)
+                if (!limitText)
                     return Colours.palette.m3onSurfaceVariant;
                 if (!valid)
                     return Colours.palette.m3error;
@@ -115,4 +119,5 @@ Item {
     }
 
     Keys.onEnterPressed: root.applyLimit()
+    Keys.onReturnPressed: root.applyLimit()
 }
