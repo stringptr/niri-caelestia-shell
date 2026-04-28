@@ -92,13 +92,17 @@ Item {
                     } else if (text.startsWith(Config.launcher.actionPrefix)) {
                         if (text.startsWith(`${Config.launcher.actionPrefix}calc `))
                             currentItem.onClicked();
-                        else
+                        else if (currentItem.modelData)
                             currentItem.modelData.onClicked(list.currentList);
+                        else
+                            currentItem.onClicked();
                     } else if (text.startsWith(Config.launcher.systemPrefix)) {
                         if (text.startsWith(`${Config.launcher.systemPrefix}calc `))
                             currentItem.onClicked();
-                        else
+                        else if (currentItem.modelData)
                             currentItem.modelData.onClicked(list.currentList);
+                        else
+                            currentItem.onClicked();
                     } else {
                         Apps.launch(currentItem.modelData);
                         root.visibilities.launcher = false;
