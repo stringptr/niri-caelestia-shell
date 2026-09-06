@@ -160,15 +160,14 @@ Item {
                 }
             }
 
-                Pane {
-                    index: 3
-                    sourceComponent: NiriThing {}
-                }
-                
-                Pane {
-                    index: 4
-                    sourceComponent: Weather {}
-                }
+            Component {
+                id: performanceComponent
+                Performance {}
+            }
+
+            Component {
+                id: weatherComponent
+                Weather {}
             }
 
             Behavior on contentX {
