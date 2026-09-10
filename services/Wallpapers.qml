@@ -23,6 +23,8 @@ Searcher {
         actualCurrent = path;
         persistWallpaperProc.wallpaperPath = path;
         persistWallpaperProc.running = true;
+        updateFastfetchLogoProc.wallpaperPath = path;
+        updateFastfetchLogoProc.running = true;
         Quickshell.execDetached(["caelestia", "wallpaper", "-f", path, ...smartArg]);
     }
 
@@ -70,6 +72,8 @@ Searcher {
         onLoaded: {
             root.actualCurrent = text().trim();
             root.previewColourLock = false;
+            updateFastfetchLogoProc.wallpaperPath = root.actualCurrent;
+            updateFastfetchLogoProc.running = true;
         }
     }
 
@@ -98,5 +102,12 @@ Searcher {
 
         property string wallpaperPath: ""
         command: ["bash", "-c", `mkdir -p '${Paths.state}/wallpaper' && echo '${wallpaperPath}' > '${root.currentNamePath}'`]
+    }
+
+    Process {
+        id: updateFastfetchLogoProc
+
+        property string wallpaperPath: ""
+        command: ["bash", "-c", `test -f ~/.config/fastfetch/config.jsonc && new_path='$HOME/Pictures/Wallpapers/'"$(basename '${wallpaperPath}')" && sed -i -E 's|"source"\\s*:\\s*"[^"]*"|"source": "'"$new_path"'"|' ~/.config/fastfetch/config.jsonc`]
     }
 }
