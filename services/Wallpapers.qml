@@ -21,6 +21,8 @@ Searcher {
 
     function setWallpaper(path: string): void {
         actualCurrent = path;
+        persistWallpaperProc.wallpaperPath = path;
+        persistWallpaperProc.running = true;
         Quickshell.execDetached(["caelestia", "wallpaper", "-f", path, ...smartArg]);
     }
 
@@ -89,5 +91,12 @@ Searcher {
                 Colours.showPreview = true;
             }
         }
+    }
+
+    Process {
+        id: persistWallpaperProc
+
+        property string wallpaperPath: ""
+        command: ["bash", "-c", `mkdir -p '${Paths.state}/wallpaper' && echo '${wallpaperPath}' > '${root.currentNamePath}'`]
     }
 }
