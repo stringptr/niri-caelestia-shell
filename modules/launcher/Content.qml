@@ -143,6 +143,8 @@ Item {
                 function onLauncherChanged(): void {
                     if (!root.visibilities.launcher)
                         search.text = "";
+                    else
+                        search.forceActiveFocus();
                 }
 
                 function onSessionChanged(): void {

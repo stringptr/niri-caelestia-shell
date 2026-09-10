@@ -30,7 +30,7 @@ Variants {
 
             readonly property bool hasFullscreen: Hypr.monitorFor(screen)?.activeWorkspace?.toplevels.values.some(t => t.lastIpcObject.fullscreen === 2) ?? false
             readonly property int dragMaskPadding: {
-                if (focusGrab.active || panels.popouts.isDetached)
+                if (panels.popouts.isDetached)
                     return 0;
 
                 const mon = Hypr.monitorFor(screen);
@@ -54,7 +54,7 @@ Variants {
             name: "drawers"
             WlrLayershell.exclusionMode: ExclusionMode.Ignore
 //             WlrLayershell.keyboardFocus: visibilities.launcher || visibilities.session ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
-            WlrLayershell.keyboardFocus: visibilities.launcher || visibilities.session || panels.dashboard.needsKeyboard ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
+            WlrLayershell.keyboardFocus: visibilities.launcher || visibilities.session || panels.dashboard.needsKeyboard ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
             // mask: Region {
             // mask: inputMask
