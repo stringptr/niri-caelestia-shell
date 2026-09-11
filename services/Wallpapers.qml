@@ -27,6 +27,8 @@ Searcher {
         updateFastfetchLogoProc.running = true;
         updateWallustColorPalettes.wallpaperPath = path;
         updateWallustColorPalettes.running = true;
+        updateMatugenColorPalettes.wallpaperPath = path;
+        updateMatugenColorPalettes.running = true;
         Quickshell.execDetached(["caelestia", "wallpaper", "-f", path, ...smartArg]);
     }
 
@@ -118,5 +120,12 @@ Searcher {
 
         property string wallpaperPath: ""
         command: ["bash", "-c", `new_path="$HOME/Pictures/Wallpapers/$(basename '${wallpaperPath}')" && wallust run "$new_path"`]
+    }
+    Process {
+
+        id: updateMatugenColorPalettes
+
+        property string wallpaperPath: ""
+        command: ["bash", "-c", `new_path="$HOME/Pictures/Wallpapers/$(basename '${wallpaperPath}')" && matugen image -t scheme-content --source-color-index 0 "$new_path"`]
     }
 }
