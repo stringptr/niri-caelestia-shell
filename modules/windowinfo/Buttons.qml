@@ -47,9 +47,9 @@ ColumnLayout {
                     readonly property int wsId: Math.floor((Niri.focusedWorkspaceIndex) / 10) * 10 + index + 1
                     readonly property bool isCurrent: (wsId - 1) % 10 === Niri.focusedWorkspaceIndex
 
-                    function onClicked(): void {
-                        Hypr.dispatch(`movetoworkspace ${wsId},address:0x${root.client?.address}`);
-                    }
+                    // function onClicked(): void {
+                    //     Hypr.dispatch(`movetoworkspace ${wsId},address:0x${root.client?.address}`);
+                    // }
 
                     color: isCurrent ? Colours.tPalette.m3surfaceContainerHighest : Colours.palette.m3tertiaryContainer
                     onColor: isCurrent ? Colours.palette.m3onSurface : Colours.palette.m3onTertiaryContainer
@@ -137,7 +137,8 @@ ColumnLayout {
                 color: Niri.focusedWindow.is_floating ? Colours.palette.m3primary : Colours.palette.m3secondaryContainer
                 onColor: Niri.focusedWindow.is_floating ? Colours.palette.m3onPrimary : Colours.palette.m3onSecondaryContainer
                 text: root.client?.is_floating ? qsTr("Tile") : qsTr("Float")
-                //     text: root.client?.lastIpcObject.floating ? qsTr("Tile") : qsTr("Float")
+                // text: root.client?.lastIpcObject.floating ? qsTr("Tile") : qsTr("Float")
+                // text: root.client?.lastIpcObject.pinned ? qsTr("Unpin") : qsTr("Pin")
                 icon: root.client?.is_floating ? "grid_view" : "picture_in_picture"
                 
                 // function onClicked(): void {
@@ -147,10 +148,6 @@ ColumnLayout {
                 function onClicked(): void {
                     Niri.toggleWindowFloating();
                 }
-
-                color: Colours.palette.m3secondaryContainer
-                onColor: Colours.palette.m3onSecondaryContainer
-                text: root.client?.lastIpcObject.pinned ? qsTr("Unpin") : qsTr("Pin")
             }
 
             Loader {
@@ -197,10 +194,6 @@ ColumnLayout {
                     Niri.closeFocusedWindow();
                 }
             }
-
-            color: Colours.palette.m3errorContainer
-            onColor: Colours.palette.m3onErrorContainer
-            text: qsTr("Kill")
         }
     }
 
@@ -237,8 +230,6 @@ ColumnLayout {
                     easing.bezierCurve: Appearance.anim.curves.standard
                 }
             }
-
-            color: parent.onColor
         }
 
         StyledText {

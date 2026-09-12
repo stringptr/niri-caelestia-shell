@@ -126,8 +126,6 @@ StyledRect {
         active: Config.bar.workspaces.occupiedBg
         asynchronous: true
 
-        asynchronous: true
-
         anchors.fill: parent
         anchors.margins: Appearance.padding.small
 
