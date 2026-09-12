@@ -25,6 +25,8 @@ Searcher {
         persistWallpaperProc.running = true;
         updateFastfetchLogoProc.wallpaperPath = path;
         updateFastfetchLogoProc.running = true;
+        updateWallustColorPalettes.wallpaperPath = path;
+        updateWallustColorPalettes.running = true;
         Quickshell.execDetached(["caelestia", "wallpaper", "-f", path, ...smartArg]);
     }
 
@@ -109,5 +111,12 @@ Searcher {
 
         property string wallpaperPath: ""
         command: ["bash", "-c", `test -f ~/.config/fastfetch/config.jsonc && new_path='$HOME/Pictures/Wallpapers/'"$(basename '${wallpaperPath}')" && sed -i -E 's|"source"\\s*:\\s*"[^"]*"|"source": "'"$new_path"'"|' ~/.config/fastfetch/config.jsonc`]
+    }
+
+    Process {
+        id: updateWallustColorPalettes
+
+        property string wallpaperPath: ""
+        command: ["bash", "-c", `new_path="$HOME/Pictures/Wallpapers/$(basename '${wallpaperPath}')" && wallust run "$new_path"`]
     }
 }
